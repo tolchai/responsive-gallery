@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+    
+      <link href='http://fonts.googleapis.com/css?family=Nixie+One|Ubuntu:400,700' rel='stylesheet' type='text/css'>  
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Gallery</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+      <link rel="stylesheet" href="css/normalize.min.css">
+      <link rel="stylesheet" href="css/main.css">
+      <link rel="stylesheet" href="css/bjqs.css">      
+      
+      <link rel="shortcut icon" href="favicon.ico">
+
+
+      <script src="js/vendor/modernizr-2.6.1.min.js"></script>
+    </head>
+    <body>
+      <div class="overlay">
+      
+   
+      </div>
+      <header class="clearfix">
+        <h1>Gallery</h1>
+        <nav>
+          <ul>
+            <li><a href="#add" data-action="add">Add</a></li>
+            <li><a href="#restore" data-action="restore">Restore</a></li>
+
+            <li><a href="#delete" data-action="delete">Delete</a></li>
+            <li><a href="#deleteall" data-action="deleteall">Delete all</a></li>                                          
+          </ul>
+        </nav>
+      </header>
+     
+      <div class="preloadwrap"><span class="preloader"></span></div>
+      <div class="targetwrap">
+
+        <div id="target" class="clearfix">
+          <div class="options">
+            <a class="closer" href="#closeimage" data-action="closeimage">Close</a>
+            <a class="prev" href="#previmage" data-action="previmage">Previous</a>            
+            <a class="next" href="#nextimage" data-action="nextimage">Next</a>
+                        
+          </div>  
+
+          <div class="placeholder clearfix">
+
+          
+          </div>
+          <div class="addoptions">
+            <a class="confirmadd button" href="#">Add selected</a>
+            <a class="canceladd button" href="#">Cancel</a>            
+          </div>
+        </div>
+      </div>      
+      
+      <div class="suboptions">
+        <a class="confirmdelete button" href="#">Delete selected</a>
+        <a class="enddelete button" href="#">Exit delete mode</a>
+      </div>      
+      
+      <div id="gallery" class="clearfix" role="main">
+      
+      
+      
+                                                           
+      </div>
+      <div class="suboptions">
+        <a class="confirmdelete button" href="#">Delete selected</a>
+        <a class="enddelete button" href="#">Exit delete mode</a>
+      </div>
+    
+      
+      
+      <footer>
+       Photos by Mark Sebastian
+      </footer>
+
+ 
+      <script id=itemTemplate type=item/template>
+        <div class="item" draggable="true">
+          <a href="{{source}}" title="{{title}}" class="{{type}}">
+            <img src="{{thumbnail}}" alt="{{alt}}">
+            <h2><span>{{title}}</span></h2>
+            <span class="type">{{type}}</span>
+          </a>
+        </div>
+      </script>
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.1.min.js"><\/script>')</script>
+      <script src="js/bjqs-1.3.js"></script>
+      <script src="js/plugins.js"></script>
+      <script src="js/main.js"></script>
+    </body>
+</html>

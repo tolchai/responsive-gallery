@@ -1,0 +1,117 @@
+{
+  "galleryName": "Responsive Gallery Name", 
+  "images": [
+    {
+      "source" : "files/original/01.jpg", 
+      "thumbnail" : "files/thumbnails/01.jpg",
+      "title" : "Image caption",
+      "alt" : "",
+      "type" : "image" 
+    }, 
+    {
+      "source" : "files/original/02.jpg", 
+      "thumbnail" : "files/thumbnails/02.jpg",
+      "title" : "Image caption",
+      "alt" : "",
+      "type" : "image"         
+    },
+    {
+      "source" : "files/original/03.jpg", 
+      "thumbnail" : "files/thumbnails/03.jpg",
+      "title" : "Longer Image Caption Longer Image Caption",
+      "alt" : "",
+      "type" : "image"  
+    }, 
+    {
+      "source" : "http://www.youtube.com/embed/9PnOG67flRA", 
+      "thumbnail" : "files/thumbnails/04.jpg",
+      "title" : "Video caption",
+      "alt" : "",
+      "type" : "video"  
+    },
+    {
+      "source" : "files/original/05.jpg", 
+      "thumbnail" : "files/thumbnails/05.jpg",
+      "title" : "Image caption",
+      "alt" : "",
+      "type" : "image"  
+    }, 
+    {
+      "source" : "files/original/06.jpg", 
+      "thumbnail" : "files/thumbnails/06.jpg",
+      "title" : "Image caption",
+      "alt" : "",
+      "type" : "image"  
+    },
+    {
+      "source" : "files/original/07.jpg", 
+      "thumbnail" : "files/thumbnails/07.jpg",
+      "title" : "Image caption",
+      "alt" : "",
+      "type" : "image"  
+    }, 
+    {
+      "source" : "files/original/08.jpg", 
+      "thumbnail" : "files/thumbnails/08.jpg",
+      "title" : "Image caption",
+      "alt" : "",
+      "type" : "image"  
+    },
+    {
+      "source" : "http://www.youtube.com/embed/sFrNsSnk8GM", 
+      "thumbnail" : "files/thumbnails/09.jpg",
+      "title" : "Video caption",
+      "alt" : "",
+      "type" : "video"  
+    }, 
+    {
+      "source" : "files/original/10.jpg", 
+      "thumbnail" : "files/thumbnails/10.jpg",
+      "title" : "Image caption",
+      "alt" : "",
+      "type" : "image"  
+    },
+    {
+      "source" : "files/original/11.jpg", 
+      "thumbnail" : "files/thumbnails/11.jpg",
+      "title" : "Image caption",
+      "alt" : "",
+      "type" : "image"  
+    }, 
+    {
+      "source" : "files/original/12.jpg", 
+      "thumbnail" : "files/thumbnails/12.jpg",
+      "title" : "Image caption",
+      "alt" : "",
+      "type" : "image"  
+    },
+    {
+      "source" : "files/original/13.jpg", 
+      "thumbnail" : "files/thumbnails/13.jpg",
+      "title" : "Image caption",
+      "alt" : "",
+      "type" : "image"  
+    }, 
+    {
+      "source" : "files/original/14.jpg", 
+      "thumbnail" : "files/thumbnails/14.jpg",
+      "title" : "Image caption",
+      "alt" : "",
+      "type" : "image"  
+    },
+    {
+      "source" : "files/original/15.jpg", 
+      "thumbnail" : "files/thumbnails/15.jpg",
+      "title" : "Image caption",
+      "alt" : "",
+      "type" : "image"  
+    }, 
+    {
+      "source" : "files/original/16.jpg", 
+      "thumbnail" : "files/thumbnails/16.jpg",
+      "title" : "Image caption",
+      "alt" : "",
+      "type" : "image"  
+    }                            
+  ]
+}

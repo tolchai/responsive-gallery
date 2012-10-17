@@ -1,0 +1,760 @@
+/*----------------------------------------------------------------------------------------------------
+
+Projekt:              Responsive gallery
+Kódování, grafika:    Matouš Barnat
+Datum dokončení:      27.9.2012
+
+----------------------------------------------------------------------------------------------------*/
+
+
+/* `Základní HTML
+----------------------------------------------------------------------------------------------------*/
+
+
+html {
+  background: #3a1b00 url('../img/bg-html3.png');
+  text-align: center; 
+  color: #fff; 
+}
+
+body {
+  font-size: 1em;
+  line-height: 1.2;
+  font-family: 'Ubuntu', sans-serif; 
+  background: url('../img/bg-body.png') top center no-repeat;
+  min-height: 560px;     
+}
+
+img {
+    vertical-align: middle;
+}
+
+h1 {
+  float: left;
+  font-family: 'Nixie One',cursive;
+  font-size: 3.3em;
+  font-weight: normal;
+  margin: 0;
+  text-align: left;
+  text-shadow: 1px 1px 0 #200f00;
+  width: 40%;    
+}
+
+body > div, header, footer {
+  width: 960px;
+  margin: 0 auto;
+  padding: 25px 0;
+
+}
+
+header {
+  position: relative;
+}
+
+div img {
+  max-width: 100%;  
+}
+
+footer {
+  font-size: 0.8em;
+  color: #9e7953;
+}
+
+/* `Menu
+----------------------------------------------------------------------------------------------------*/
+
+nav {
+  margin-top: -27px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 60%;
+}
+
+nav ul {
+  float: right;
+  margin: 0 24px 0 0;
+  padding: 0;
+}
+
+
+
+nav ul li {
+  background: url('../img/bg-menu.png') repeat-x;
+  float: left;
+  position: relative;
+}
+                
+               
+nav ul li:first-child:before {
+  background: url('../img/bg-menu-left.png') right no-repeat;
+  width: 14px;
+  height: 54px;
+  display: inline-block;
+  line-height: 54px;
+  content: ''; 
+  position: absolute;
+  left: -14px;
+  top: 0;
+}
+
+nav ul li:last-child:after {
+  background: url('../img/bg-menu-right.png') left no-repeat;
+  width: 14px;
+  line-height: 54px;
+  height: 54px;
+  display: inline-block;
+  content: ''; 
+  position: absolute;
+  right: -14px;  
+  top: 0;  
+}
+
+nav ul li a {
+  color: #FF7800;
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  height: 54px;
+  line-height: 54px;
+  padding: 0 17px;
+  text-decoration: none;
+  text-shadow: 1px 1px 0 #B25400;
+  text-transform: uppercase;  
+  background: url('../img/bg-menu-divider.png') left top repeat-y;    
+  position: relative;                                       
+}
+
+nav ul li a.disabled {
+  color: #a1a1a1;
+  text-shadow: 1px 1px 0px #6a6a6a;  
+}
+
+nav ul li a.active:after {
+  background: url('../img/bg-menu-active.png') left no-repeat;
+  width: 14px;
+  height: 7px;
+  display: inline-block;
+  content: ''; 
+  left: 50%;
+  margin-left: -5px;
+  position: absolute;
+  bottom: -6px;      
+}
+
+nav ul li:first-child a {
+  background: none;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* `Galerie
+----------------------------------------------------------------------------------------------------*/
+
+div#gallery {
+  padding-top: 0;
+}
+
+div#gallery > div, div.placeholder > div.item {
+  float: left;
+  width: 23%;
+  margin: 1%;
+  text-align: center;
+  position: relative;
+	-webkit-transition: all 0.15s;
+	-moz-transition: all 0.15s;
+	-o-transition: all 0.15s;   
+}
+
+#gallery > div a {
+  cursor: move;
+  cursor: pointer \9;
+}
+
+      
+
+div#gallery > div {
+  float: left;
+  width: 23%;
+  margin: 1%;
+  text-align: center;
+  position: relative;
+  display: block;
+	-webkit-transition: all 0.15s;
+	-moz-transition: all 0.15s;
+	-o-transition: all 0.15s; 
+}
+
+div#gallery > div img, div.placeholder > div img {
+  max-width: 94%;
+  padding: 3%;
+  background: #fff;
+  position: relative;
+  top: 0;
+  left: 0;
+  box-shadow: 1px 1px 0px 0px #200f00;   
+	-webkit-transition: all 0.15s 0.16s ease-out;
+	-moz-transition: all 0.15s 0.16s ease-out;
+	-o-transition: all 0.15s 0.16s ease-out; 
+}
+
+div.placeholder .heading {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 1em;
+  padding: 1% 0;  
+}
+
+div.placeholder > div img {
+	-webkit-transition: all 0.15s 0s ease-out;
+	-moz-transition: all 0.15s 0s ease-out;
+	-o-transition: all 0.15s 0s ease-out; 
+  -webkit-box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+div.placeholder > div a {
+  text-decoration: none; 
+}
+
+div#gallery.deletemode > div img {
+  background: #dbdbdb;
+}
+
+div#gallery.deletemode > div.todelete.hover img, div#gallery.deletemode > div.todelete img {
+  background: #ff0000;
+}
+
+html:not(.touch) div#gallery > div.item span.type {
+  opacity: 0;
+  height: 100%;
+  left: -5px;
+  position: absolute;
+  top: -5px;
+  width: 100%;  
+  text-indent: -9999px;  
+	-webkit-transition: opacity 0.15s 0s ease-out; 
+	-moz-transition: opacity 0.15s 0s ease-out; 
+	-o-transition: opacity 0.15s 0s ease-out;   
+}
+
+html:not(.touch) div#gallery > div.hover img {
+  background-color: #ff7800;
+  position: relative;
+  top: -5px;
+  left: -5px;  
+	-webkit-transition: all 0.15s 0s ease-out; 
+	-moz-transition: all 0.15s 0s ease-out; 
+	-o-transition: all 0.15s 0s ease-out;  
+  box-shadow:  
+  1px 1px 0px 0px #200f00, 
+  2px 2px 0px 0px #200f00,
+  3px 3px 0px 0px #200f00, 
+  4px 4px 0px 0px #200f00, 
+  5px 5px 0px 0px #200f00;              
+}
+
+html:not(.touch) div#gallery > div.item.hover a.image span.type {
+  opacity: 1;   
+  background:url('../img/ico-zoom.png') center center no-repeat;
+}
+
+html:not(.touch) div#gallery > div.item.hover a.video span.type {
+  opacity: 1;
+  background:url('../img/ico-play.png') center center no-repeat;
+}
+
+html:not(.touch) div#gallery.deletemode > div.item.hover a span.type {
+  opacity: 0;
+}
+
+html.touch div#gallery > div.item a span.type {
+  display: none;
+}
+       
+div#gallery > div h2 {
+  position: absolute;
+  bottom: 5px;
+  left: -5px;  
+  width: 100%;
+  font-size: 0.9em;
+  color: #fff;
+  z-index: 5; 
+  margin: 0;
+  overflow: hidden;
+  text-shadow: 1px 1px 0px #b25400;
+  
+}
+
+div#gallery > div h2 span {
+  bottom: -200px;
+  left: 5px;
+  position: relative;
+  display: block;  
+  background-color: #fff;  
+  padding: 5% 2%;
+  width: 96%;
+	-webkit-transition: all 0.15s ease-out;
+	-moz-transition: all 0.15s ease-out;
+	-o-transition: all 0.15s ease-out;      
+}
+
+html:not(.touch) div#gallery > div.hover h2 span {
+  bottom: 0px;
+  left: 0;     
+  background-color: #ff7800;    
+}
+
+html:not(.touch) div#gallery > div.todelete.hover h2 span {
+  background-color: #ff0000; 
+}
+
+#gallery > p.note {
+  position: absolute;
+  left: 50%;
+  margin-left: -72px;
+}   
+
+/* `Zobrazování a přidávání obsahu
+----------------------------------------------------------------------------------------------------*/
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 40;
+  background: #000;
+  display: none;
+  opacity: 0.85;  
+}
+
+#target {
+  display: none;
+  position: absolute;
+  width: 980px;
+  z-index: 50;
+}
+
+#target .placeholder {
+  background: #000;
+}
+
+#target .placeholder.addwin {
+  background: none;
+} 
+
+#target div.item a span.type {
+  color: #fff;
+  font-size: 0.7em;
+  display: block;
+}
+
+div.placeholder > div.item {
+  width: 15%;
+  margin: 0.8333%;  
+}
+
+div.placeholder > div.hover img {
+  background-color: #ff7800;
+}
+
+div.placeholder > div h2 {
+  font-size: 1em;
+  margin: 0;
+}
+
+div.placeholder > div h2 span {
+  color:#fff;
+}
+
+#target div.toadd img {
+  background: #24a548;
+}
+
+.options a {
+  display: block;
+  text-indent: -9999px;
+  position: absolute;
+  width: 66px;
+  height: 66px;
+  z-index: 60;
+  opacity: 0.3;   
+	-webkit-transition: all 0.15s ease-out;
+	-moz-transition: all 0.15s ease-out;
+	-o-transition: all 0.15s ease-out;    
+}
+
+.options a.closer {
+  background:url('../img/ico-close.png') center center no-repeat;  
+  top: 20px;
+  right: 20px;  
+}
+
+.options a.prev {
+  background:url('../img/ico-prev.png') center center no-repeat;  
+  bottom: 50px;
+  left: 20px;  
+}
+
+.options a.next {
+  background:url('../img/ico-next.png') center center no-repeat;  
+  bottom: 50px;
+  right: 20px;  
+}
+
+.options a:hover {
+  opacity: 0.9;   
+}
+
+#target img {
+  position: relative;
+  height: auto;
+}
+
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.videowrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px; height: 0; overflow: hidden;
+}
+
+
+/* `Tlačítka
+----------------------------------------------------------------------------------------------------*/
+
+.button {
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+  font-size: 0.9em;
+  font-weight: bold;
+  padding: 0 10px;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.button.confirmdelete, .button.canceladd {
+  border: 1px solid #e00303;
+  background: #e56060;
+  background: -moz-linear-gradient(top,  #e56060 0%, #e00303 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e56060), color-stop(100%,#e00303));
+  background: -webkit-linear-gradient(top,  #e56060 0%,#e00303 100%);
+  background: -o-linear-gradient(top,  #e56060 0%,#e00303 100%);
+  background: -ms-linear-gradient(top,  #e56060 0%,#e00303 100%);
+  background: linear-gradient(to bottom,  #e56060 0%,#e00303 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e56060', endColorstr='#e00303',GradientType=0 );
+}
+
+.button.confirmdelete:hover, .button.cancelaad:hover {
+  background: #ec8888;
+  background: -moz-linear-gradient(top,  #ec8888 0%, #e74141 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ec8888), color-stop(100%,#e74141));
+  background: -webkit-linear-gradient(top,  #ec8888 0%,#e74141 100%);
+  background: -o-linear-gradient(top,  #ec8888 0%,#e74141 100%);
+  background: -ms-linear-gradient(top,  #ec8888 0%,#e74141 100%);
+  background: linear-gradient(to bottom,  #ec8888 0%,#e74141 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ec8888', endColorstr='#e74141',GradientType=0 );
+}
+
+.button.confirmdelete:active, .button.canceladd:active {
+  background: #e00303;
+  background: -moz-linear-gradient(top,  #c00000 0%, #e56060 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c00000), color-stop(100%,#e56060));
+  background: -webkit-linear-gradient(top,  #c00000 0%,#e56060 100%);
+  background: -o-linear-gradient(top,  #c00000 0%,#e56060 100%);
+  background: -ms-linear-gradient(top,  #c00000 0%,#e56060 100%);
+  background: linear-gradient(to bottom,  #c00000 0%,#e56060 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c00000', endColorstr='#e56060',GradientType=0 );  
+}
+
+.button.enddelete,.button.confirmadd {
+  border: 1px solid #24a548;
+  background: #29cb56;
+  background: -moz-linear-gradient(top,  #29cb56 0%, #24a548 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#29cb56), color-stop(100%,#24a548));
+  background: -webkit-linear-gradient(top,  #29cb56 0%,#24a548 100%);
+  background: -o-linear-gradient(top,  #29cb56 0%,#24a548 100%);
+  background: -ms-linear-gradient(top,  #29cb56 0%,#24a548 100%);
+  background: linear-gradient(to bottom,  #29cb56 0%,#24a548 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#29cb56', endColorstr='#24a548',GradientType=0 );
+}
+
+.button.enddelete:hover,.button.confirmadd:hover {
+  background: #5fd880;
+  background: -moz-linear-gradient(top,  #5fd880 0%, #5bbc76 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5fd880), color-stop(100%,#5bbc76));
+  background: -webkit-linear-gradient(top,  #5fd880 0%,#5bbc76 100%);
+  background: -o-linear-gradient(top,  #5fd880 0%,#5bbc76 100%);
+  background: -ms-linear-gradient(top,  #5fd880 0%,#5bbc76 100%);
+  background: linear-gradient(to bottom,  #5fd880 0%,#5bbc76 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5fd880', endColorstr='#5bbc76',GradientType=0 );
+}
+
+.button.enddelete:active,.button.confirmadd:active {
+  background: #148434;
+  background: -moz-linear-gradient(top,  #148434 0%, #28ca56 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#148434), color-stop(100%,#28ca56));
+  background: -webkit-linear-gradient(top,  #148434 0%,#28ca56 100%);
+  background: -o-linear-gradient(top,  #148434 0%,#28ca56 100%);
+  background: -ms-linear-gradient(top,  #148434 0%,#28ca56 100%);
+  background: linear-gradient(to bottom,  #148434 0%,#28ca56 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#148434', endColorstr='#28ca56',GradientType=0 );
+}
+
+/* `Pomocné třídy
+----------------------------------------------------------------------------------------------------*/
+
+.transparent {
+  opacity: 0.75; 
+}
+
+.placeholder .transparent, .hover, .addmode .transparent {
+  opacity: 1; 
+}
+
+.extratransparent {
+  opacity: 0.4; 
+}
+
+html:not(.touch) div#gallery > div.item.extratransparent span.type {
+  display: none;  
+}
+
+.suboptions, .addoptions, .preloadwrap, .options  {
+  display: none;
+}
+
+.preloadwrap, .targetwrap {
+  padding: 0;
+}
+
+.addoptions {
+  padding: 10px 0;
+}
+
+.preloader {  
+  background:url('../img/preloader.png') center center no-repeat;  
+  display:inline-block; 
+  height: 16px;
+  width: 16px;  
+}  
+
+div.over {
+  -webkit-box-shadow: 0px 0px 0px 5px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 0px 0px 5px rgba(255, 255, 255, 0.5); 
+}
+
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+
+/* `Media Queries
+----------------------------------------------------------------------------------------------------*/
+  
+@media only screen and (max-width: 976px) {
+
+
+
+  body > div, footer {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  header {
+    width: 98%;
+    max-width: 98%;
+    margin: 0 1%;
+  }
+  
+  nav ul {
+    margin: 0 14px 0 0;
+  }
+  
+  div.placeholder > div.item {
+      margin: 1%;
+      width: 18%;
+  }    
+  
+}
+
+@media only screen and (max-width: 760px) {
+
+  body > div, header, footer {
+    margin: 0 auto;
+  }
+
+  h1 {
+    position: static;
+    float: none;
+    width: 100%;    
+    padding-bottom: 0.4em;       
+  }
+
+  nav {
+    position: static;
+    margin-top: 0;
+    width: 100%;    
+  }
+  
+  nav ul {
+    float: none;
+    margin: 0 14px 0 -14px;  
+  }
+  
+  nav ul li a {
+      background: url('../img/bg-menu-divider.png') left top repeat-y;
+  }
+  
+  nav ul li:first-child a, h1 {
+      background: none;
+      
+  }  
+
+  div#gallery > div {
+    width: 31%;
+  }
+  
+  div.placeholder > div.item h2 {
+      display: none;
+  }  
+  
+}
+  
+@media only screen and (max-width: 480px) {
+  
+  header {
+    width: 100%;
+    max-width: 100%;  
+  }
+  
+  h1 {
+    padding-left: 0px;
+    text-align: center;  
+  }
+  
+  nav ul li:first-child:before, nav ul li:last-child:after {
+    display: none;
+  }
+  
+  nav ul {
+    margin: 0;  
+  }
+  
+  nav ul li {
+    display: block;
+    width: 100%;
+    position: static;    
+  }
+
+  div#gallery > div {
+    width: 48%;
+  }  
+  
+  div.placeholder > div.item {
+      margin: 1%;
+      width: 23%;
+  }  
+}
+
+/* `Tiskové styly
+----------------------------------------------------------------------------------------------------*/
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow:none !important;
+        text-shadow: none !important;
+    }
+
+    header, h2 {
+      display: none;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; 
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
